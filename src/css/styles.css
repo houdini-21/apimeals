@@ -62,6 +62,9 @@ body {
   font-family: 'suprema-regular';
   src: url(../../src/fonts/suprema/0c8b7aaa-bf31-432c-9f2a-a9c16ffa7ca5.ttf); }
 
+.shadow {
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15); }
+
 .navbar__navbar {
   background-color: #5BD988;
   width: 100%;
@@ -109,7 +112,7 @@ body {
   justify-content: center;
   flex-direction: column;
   width: 90%;
-  margin: 2rem auto; }
+  margin: 1rem auto; }
   .principal__container-title {
     width: 100%;
     text-align: center;
@@ -130,5 +133,41 @@ body {
   height: 20rem;
   width: 20rem;
   border-radius: 2rem;
-  background-color: red;
-  margin: 2rem; }
+  background-color: #FFFFFF;
+  margin: 2rem;
+  position: relative; }
+  .principal__card-item-p {
+    font-family: "suprema-regular";
+    color: #FFFFFF;
+    font-size: 1.8rem;
+    width: 75%;
+    text-align: center; }
+
+.principal__card-img {
+  width: 20rem;
+  height: 20rem;
+  object-fit: contain; }
+  .principal__card-img-meals {
+    width: 20rem;
+    height: 20rem;
+    object-fit: cover;
+    border-radius: 2rem; }
+
+.principal__card-item-back {
+  width: 20rem;
+  height: 0rem;
+  border-radius: 2rem;
+  background-color: rgba(80, 191, 119, 0.9);
+  position: absolute;
+  bottom: 0;
+  transition: 0.6s;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  cursor: pointer; }
+
+.principal__card-item:hover .principal__card-item-back {
+  height: 20rem;
+  opacity: 1; }
