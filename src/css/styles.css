@@ -1,0 +1,134 @@
+/* principal colors*/
+/* fonts color */
+/* background color */
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); }
+  80% {
+    transform: translateX(1rem); }
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translatey(3rem); }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  box-sizing: border-box; }
+
+.u-center-text {
+  text-align: center !important; }
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem !important; }
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem !important; }
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem !important; }
+
+.u-margin-top-big {
+  margin-top: 8rem !important; }
+
+.u-margin-top-huge {
+  margin-top: 10rem !important; }
+
+@font-face {
+  font-family: 'suprema-regular';
+  src: url(../../src/fonts/suprema/0c8b7aaa-bf31-432c-9f2a-a9c16ffa7ca5.ttf); }
+
+.navbar__navbar {
+  background-color: #5BD988;
+  width: 100%;
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  border-radius: 0px 0px 20px 20px; }
+
+.navbar__container-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 90%; }
+
+.navbar__container-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row; }
+
+.navbar__container-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 23%; }
+
+.navbar__icon {
+  width: 4.5rem;
+  height: 4.5rem; }
+
+.navbar__item-navbar {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-family: "suprema-regular";
+  font-size: 1.5rem;
+  cursor: pointer; }
+
+.principal__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 90%;
+  margin: 2rem auto; }
+  .principal__container-title {
+    width: 100%;
+    text-align: center;
+    height: 7rem; }
+  .principal__container-cards {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap; }
+
+.principal__title {
+  font-family: "suprema-regular";
+  color: #302F2E;
+  font-size: 5rem; }
+
+.principal__card-item {
+  height: 20rem;
+  width: 20rem;
+  border-radius: 2rem;
+  background-color: red;
+  margin: 2rem; }

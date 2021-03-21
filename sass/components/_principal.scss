@@ -1,0 +1,31 @@
+.principal {
+  &__container {
+    @include flex-column;
+    width: 90%;
+    margin: 2rem auto;
+
+    &-title {
+      width: 100%;
+      text-align: center;
+      height: 7rem;
+    }
+    &-cards {
+      @include flex-row;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__title {
+    font-family: "suprema-regular";
+    color: $black-dark-1;
+    font-size: 5rem;
+  }
+
+  &__card-item {
+    height: 20rem;
+    width: 20rem;
+    border-radius: 2rem;
+    background-color: red;
+    margin: 2rem;
+  }
+}
