@@ -1,7 +1,26 @@
+const principalBody = document.getElementById('principal-container');
+const loading = document.getElementById('loader');
+
+const clearDivs = () => {
+  principalBody.innerHTML = '';
+};
+
+const showLoader = () => {
+  loading.classList.add('show');
+  principalBody.classList.add('hidden');
+};
+
+const hiddenLoader = () => {
+  loading.classList.remove('show');
+  principalBody.classList.add('houdini');
+  principalBody.classList.remove('hidden');
+};
+
 async function getCategorySelected(category) {
   const url = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=';
   const urlfinal = url + category;
   try {
+    showLoader();
     const res = await fetch(urlfinal);
     return await res.json();
   } catch (error) {
@@ -12,6 +31,7 @@ async function getCategorySelected(category) {
 async function getCategory() {
   const url = 'https://www.themealdb.com/api/json/v1/1/categories.php';
   try {
+    showLoader();
     const res = await fetch(url);
     return await res.json();
   } catch (error) {
@@ -21,6 +41,7 @@ async function getCategory() {
 
 async function renderMealsCategory(category) {
   const res = await getCategorySelected(category);
+  clearDivs();
   res.meals.forEach((meal) => {
     const cardHtml = `
           <div class="principal__card-item shadow">
@@ -32,10 +53,14 @@ async function renderMealsCategory(category) {
 
         `;
 
-    document
-      .getElementById('principal-container')
-      .insertAdjacentHTML('beforeend', cardHtml);
+    principalBody.insertAdjacentHTML('beforeend', cardHtml);
   });
+
+  const cards = document.querySelectorAll('.principal__card-item');
+  cards.forEach((card) => {
+    card.addEventListener('click', () => {});
+  });
+  hiddenLoader();
 }
 
 async function renderCategories() {
@@ -51,9 +76,7 @@ async function renderCategories() {
 
         `;
 
-    document
-      .getElementById('principal-container')
-      .insertAdjacentHTML('beforeend', cardHtml);
+    principalBody.insertAdjacentHTML('beforeend', cardHtml);
   });
 
   const cards = document.querySelectorAll('.principal__card-item');
@@ -62,5 +85,7 @@ async function renderCategories() {
       renderMealsCategory(card.id);
     });
   });
+
+  hiddenLoader();
 }
 renderCategories();
