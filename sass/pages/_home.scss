@@ -11,13 +11,20 @@
 }
 
 .loader__div {
-    display: none;
+  display: none;
 }
 
 .houdini {
-  animation:  moveInBottom ease 1.5s;
+  animation: moveInBottom ease 1.2s;
 }
 
+.fadeIn {
+  animation: fadeIn ease 0.7s;
+}
+
+.fadeOut {
+  animation: fadeOut ease 0.7s;
+}
 
 .loader,
 .loader:before,

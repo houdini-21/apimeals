@@ -29,6 +29,18 @@
     opacity: 1;
     transform: translateY(0); } }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
 @-webkit-keyframes load2 {
   0% {
     -webkit-transform: rotate(0deg);
@@ -77,6 +89,10 @@ body {
 @font-face {
   font-family: 'suprema-regular';
   src: url(../../src/fonts/suprema/0c8b7aaa-bf31-432c-9f2a-a9c16ffa7ca5.ttf); }
+
+@font-face {
+  font-family: 'suprema-light';
+  src: url(../../src/fonts/suprema/40f26d3b-c25f-4417-8c02-2e043d52fa23.ttf); }
 
 .navbar__navbar {
   background-color: #5bd988;
@@ -138,7 +154,7 @@ body {
     flex-wrap: wrap; }
 
 .principal__title {
-  font-family: "suprema-regular";
+  font-family: 'suprema-regular';
   color: #302F2E;
   font-size: 5rem; }
 
@@ -150,7 +166,7 @@ body {
   margin: 2rem;
   position: relative; }
   .principal__card-item-p {
-    font-family: "suprema-regular";
+    font-family: 'suprema-regular';
     color: #FFFFFF;
     font-size: 1.8rem;
     width: 75%;
@@ -185,6 +201,127 @@ body {
   height: 20rem;
   opacity: 1; }
 
+.principal__meal {
+  display: flex;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  /* Full width */
+  height: 1%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: #50BF77;
+  /* Black w/ opacity */
+  transition: 0.6s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row; }
+  .principal__meal-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    transition: all 0.2s; }
+  .principal__meal-close {
+    position: absolute;
+    top: -5px;
+    right: 2rem;
+    font-size: 5rem;
+    color: #FFFFFF;
+    cursor: pointer; }
+  .principal__meal-detail {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 30rem;
+    height: 85%;
+    background-color: #FFFBF5;
+    border-radius: 10px;
+    margin: 0 1.5rem;
+    box-shadow: 0px 8px 25px rgba(48, 47, 46, 0.15); }
+    .principal__meal-detail-img {
+      height: 30rem;
+      width: 30rem;
+      object-fit: cover;
+      border-radius: 10px 10px 0 0; }
+    .principal__meal-detail-box {
+      padding: 2rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-direction: column; }
+    .principal__meal-detail-title {
+      font-family: 'suprema-regular';
+      font-size: 1.5rem;
+      color: #50BF77;
+      margin: 0.6rem 0; }
+      .principal__meal-detail-title-light {
+        font-family: 'suprema-light';
+        font-size: 1.5rem;
+        color: #302F2E; }
+  .principal__meal-instructions {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 98rem;
+    height: 85%;
+    background-color: #FFFBF5;
+    border-radius: 10px;
+    margin: 0 1.5rem;
+    padding: 3rem;
+    box-shadow: 0px 8px 25px rgba(48, 47, 46, 0.15); }
+    .principal__meal-instructions-title {
+      color: #50BF77;
+      font-family: 'suprema-light';
+      font-size: 3.7rem; }
+    .principal__meal-instructions-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: row;
+      width: 100%;
+      margin: 2rem 0; }
+    .principal__meal-instructions-description {
+      width: 100%; }
+    .principal__meal-instructions-p {
+      font-family: 'suprema-light';
+      color: #302F2E;
+      font-size: 1.4rem; }
+    .principal__meal-instructions-ingredients, .principal__meal-instructions-measure {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-direction: column;
+      width: 50%; }
+    .principal__meal-instructions-meal-title {
+      font-family: 'suprema-regular';
+      font-size: 2rem;
+      color: #50BF77; }
+    .principal__meal-instructions-list {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      flex-wrap: wrap;
+      font-family: 'suprema-light';
+      font-size: 1.4rem;
+      color: #302F2E;
+      height: 15rem; }
+      .principal__meal-instructions-list > li {
+        margin: 0.5rem 1rem;
+        list-style: none; }
+
 .shadow {
   box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15); }
 
@@ -198,7 +335,13 @@ body {
   display: none; }
 
 .houdini {
-  animation: moveInBottom ease 1.5s; }
+  animation: moveInBottom ease 1.2s; }
+
+.fadeIn {
+  animation: fadeIn ease 0.7s; }
+
+.fadeOut {
+  animation: fadeOut ease 0.7s; }
 
 .loader,
 .loader:before,

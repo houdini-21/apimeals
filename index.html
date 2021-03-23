@@ -21,14 +21,87 @@
     </nav>
     <main class="principal__container">
       <div class="principal__container-title">
-        <h2 class="principal__title">Categories</h2>
+        <h2 class="principal__title" id="title">Categories</h2>
       </div>
       <div class="loader__div" id="loader">
         <div class="loader"></div>
       </div>
       <div class="principal__container-cards" id="principal-container"></div>
-    </main>
 
+      <section class="principal__meal" id="meal-div">
+          <div class="principal__meal-div hidden fadeOut" id="container-meals-data">
+          <span class="principal__meal-close" id="closeBtn">&times;</span>
+          <div class="principal__meal-detail">
+            <img class="principal__meal-detail-img" src="" alt="" />
+            <div class="principal__meal-detail-box">
+              <h4 class="principal__meal-detail-title">
+                Category:
+                <span class="principal__meal-detail-title-light"
+                  >Breakfast</span
+                >
+              </h4>
+              <h4 class="principal__meal-detail-title">
+                Area:
+                <span class="principal__meal-detail-title-light">America</span>
+              </h4>
+              <h4 class="principal__meal-detail-title">
+                Tags: <span class="principal__meal-detail-title-light">to</span>
+              </h4>
+            </div>
+          </div>
+          <div class="principal__meal-instructions">
+            <h2 class="principal__meal-instructions-title">
+              Fruit and Cream Cheese Breakfast Pastries
+            </h2>
+            <div class="principal__meal-instructions-box">
+              <div class="principal__meal-instructions-ingredients">
+                <h3 class="principal__meal-instructions-meal-title">
+                  Ingredients
+                </h3>
+                <div class="principal__meal-instructions-list">
+                  <li>Esto es un tipo de punto.</li>
+                  <li>Este es otro.</li>
+                  <li>Y este es otro diferente.</li>
+                </div>
+              </div>
+              <div class="principal__meal-instructions-measure">
+                <h3 class="principal__meal-instructions-meal-title">Measure</h3>
+                <div class="principal__meal-instructions-list">
+                  <li>Esto es un tipo de punto.</li>
+                  <li>Este es otro.</li>
+                  <li>Y este es otro diferente.</li>
+                </div>
+              </div>
+            </div>
+            <div class="principal__meal-instructions-description">
+              <h3
+                class="principal__meal-instructions-meal-title u-margin-bottom-small"
+              >
+                How to cook?
+              </h3>
+              <p class="principal__meal-instructions-p">
+                Preheat oven to 400ºF (200ºC), and prepare two cookie sheets
+                with parchment paper. In a bowl, mix cream cheese, sugar, and
+                vanilla until fully combined. Lightly flour the surface and roll
+                out puff pastry on top to flatten. Cut each sheet of puff pastry
+                into 9 equal squares. On the top right and bottom left of the
+                pastry, cut an L shape approximately ½ inch (1 cm) from the
+                edge.\r\nNOTE: This L shape should reach all the way down and
+                across the square, however both L shapes should not meet at the
+                ends. Your pastry should look like a picture frame with two
+                corners still intact.\r\nTake the upper right corner and fold
+                down towards the inner bottom corner. You will now have a
+                diamond shape.\r\nPlace 1 to 2 teaspoons of the cream cheese
+                filling in the middle, then place berries on top.\r\nRepeat with
+                the remaining pastry squares and place them onto the parchment
+                covered baking sheet.\r\nBake for 15-20 minutes or until pastry
+                is golden brown and puffed.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
     <script type="module" src="./src/js/app.js"></script>
   </body>
 </html>

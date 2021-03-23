@@ -18,3 +18,7 @@
   justify-content: center;
   flex-direction: column;
 }
+
+@mixin shadow {
+  box-shadow: 0px 8px 25px rgba($black-dark-1, 0.15);
+}
