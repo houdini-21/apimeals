@@ -135,6 +135,14 @@ body {
   font-size: 1.5rem;
   cursor: pointer; }
 
+.principal__back-icon {
+  color: #50BF77;
+  position: absolute;
+  left: 0;
+  font-size: 70px;
+  top: -20px;
+  cursor: pointer; }
+
 .principal__container {
   display: flex;
   align-items: center;
@@ -145,7 +153,8 @@ body {
   .principal__container-title {
     width: 100%;
     text-align: center;
-    height: 7rem; }
+    height: 7rem;
+    position: relative; }
   .principal__container-cards {
     display: flex;
     align-items: center;
@@ -203,21 +212,14 @@ body {
 
 .principal__meal {
   display: flex;
-  /* Hidden by default */
   position: fixed;
-  /* Stay in place */
   z-index: 1;
-  /* Sit on top */
   left: 0;
   bottom: 0;
   width: 100%;
-  /* Full width */
   height: 1%;
-  /* Full height */
   overflow: auto;
-  /* Enable scroll if needed */
   background-color: #50BF77;
-  /* Black w/ opacity */
   transition: 0.6s;
   display: flex;
   align-items: center;
@@ -280,6 +282,8 @@ body {
     border-radius: 10px;
     margin: 0 1.5rem;
     padding: 3rem;
+    overflow-x: hidden;
+    overflow-y: auto;
     box-shadow: 0px 8px 25px rgba(48, 47, 46, 0.15); }
     .principal__meal-instructions-title {
       color: #50BF77;
@@ -303,7 +307,7 @@ body {
       align-items: flex-start;
       justify-content: center;
       flex-direction: column;
-      width: 50%; }
+      width: 100%; }
     .principal__meal-instructions-meal-title {
       font-family: 'suprema-regular';
       font-size: 2rem;
@@ -338,10 +342,10 @@ body {
   animation: moveInBottom ease 1.2s; }
 
 .fadeIn {
-  animation: fadeIn ease 0.7s; }
+  animation: fadeIn ease 0.6s; }
 
 .fadeOut {
-  animation: fadeOut ease 0.7s; }
+  animation: fadeOut ease 0.6s; }
 
 .loader,
 .loader:before,
@@ -389,3 +393,16 @@ body {
   transform-origin: 0.1em 5.1em;
   -webkit-animation: load2 2s infinite ease;
   animation: load2 2s infinite ease; }
+
+.scroll::-webkit-scrollbar {
+  width: 5px; }
+
+.scroll::-webkit-scrollbar-track {
+  background: #FFFBF5; }
+
+.scroll::-webkit-scrollbar-thumb {
+  background: #5bd988;
+  border-radius: 5px; }
+
+.scroll::-webkit-scrollbar-thumb:hover {
+  background: #5bd988; }
