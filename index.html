@@ -13,9 +13,8 @@
           <img class="navbar__icon" src="./src/img/logo-white.svg" alt="logo" />
         </div>
         <div class="navbar__container-text">
-          <a class="navbar__item-navbar">Categories</a>
-          <a class="navbar__item-navbar">Area</a>
-          <a class="navbar__item-navbar">Ingredients</a>
+            <a class="navbar__item-navbar" id="categorys">Categories</a>
+          <a class="navbar__item-navbar" id="ingredients">Ingredients</a>
         </div>
       </div>
     </nav>
@@ -23,6 +22,7 @@
       <div class="principal__container-title">
         <h2 class="principal__title" id="title">Categories</h2>
         <h2 class="principal__back-icon" title="Return" id="btnBack">&#8592;</h2>
+        <h2 class="principal__back-icon hidden" title="Return" id="btnBackingredients">&#8592;</h2>
       </div>
       <div class="loader__div" id="loader">
         <div class="loader"></div>
@@ -33,7 +33,12 @@
         <div
           class="principal__meal-div hidden fadeOut"
           id="container-meals-data"
-        ></div>
+        >
+
+      <div class="loader__div" id="loadermeals">
+        <div class="loader-white show"></div>
+      </div>
+        </div>
       </section>
     </main>
     <script type="module" src="./src/js/app.js"></script>

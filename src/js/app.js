@@ -4,6 +4,7 @@ const title = document.getElementById('title');
 const mealDiv = document.getElementById('meal-div');
 const containerMeals = document.getElementById('container-meals-data');
 const btnBack = document.getElementById('btnBack');
+const btnBackingredients = document.getElementById('btnBackingredients');
 
 const clearDivs = () => {
   principalBody.innerHTML = '';
@@ -32,8 +33,19 @@ async function getMealSelected(id) {
   }
 }
 
-async function getCategorySelected(category) {
-  const url = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=';
+const renderMeasureAndIngredients = (ingredients, measure) => {
+  let temp = '';
+  ingredients.forEach((ingredient, indexArray) => {
+    temp += `<li>${measure[indexArray] ? measure[indexArray] : ''}  ${
+      ingredient ? ingredient : ''
+    }</li>`;
+  });
+  return temp;
+};
+
+async function getCategorySelected(category, type) {
+  const url =
+    'https://www.themealdb.com/api/json/v1/1/filter.php?' + type + '=';
   const urlfinal = url + category;
   title.innerText = category;
   try {
@@ -45,8 +57,10 @@ async function getCategorySelected(category) {
   }
 }
 
-async function getCategory() {
-  const url = 'https://www.themealdb.com/api/json/v1/1/categories.php';
+async function getCategory(type) {
+  const url =
+    'https://www.themealdb.com/api/json/v1/1/list.php?' + type + '=list';
+  console.log(url);
   try {
     showLoader();
     const res = await fetch(url);
@@ -58,7 +72,13 @@ async function getCategory() {
 
 async function renderMealModal(id) {
   const res = await getMealSelected(id);
+  const ingredients = [];
+  const quantity = [];
   res.meals.forEach((meal) => {
+    for (let item in meal) {
+      if (item.includes('Ingredient')) ingredients.push(meal[item]);
+      if (item.includes('Measure')) quantity.push(meal[item]);
+    }
     const modalTemplate = `
           <span class="principal__meal-close" id="closeBtn">&times;</span>
           <div class="principal__meal-detail">
@@ -94,67 +114,8 @@ async function renderMealModal(id) {
                 <h3 class="principal__meal-instructions-meal-title">
                   Ingredients
                 </h3>
-                <div class="principal__meal-instructions-list">
-                <li>${meal.strMeasure1}  ${
-      meal.strIngredient1 != null ? meal.strIngredient1 : ''
-    }</li>
-                <li>${meal.strMeasure2}  ${
-      meal.strIngredient2 != null ? meal.strIngredient2 : ''
-    }</li>
-                <li>${meal.strMeasure3}  ${
-      meal.strIngredient3 != null ? meal.strIngredient3 : ''
-    }</li>
-                <li>${meal.strMeasure4}  ${
-      meal.strIngredient4 != null ? meal.strIngredient4 : ''
-    }</li>
-                <li>${meal.strMeasure5}  ${
-      meal.strIngredient5 != null ? meal.strIngredient5 : ''
-    }</li>
-                <li>${meal.strMeasure6}  ${
-      meal.strIngredient6 != null ? meal.strIngredient6 : ''
-    }</li>
-                <li>${meal.strMeasure7}  ${
-      meal.strIngredient7 != null ? meal.strIngredient7 : ''
-    }</li>
-                <li>${meal.strMeasure8}  ${
-      meal.strIngredient8 != null ? meal.strIngredient8 : ''
-    }</li>
-                <li>${meal.strMeasure9}  ${
-      meal.strIngredient9 != null ? meal.strIngredient9 : ''
-    }</li>
-                <li>${meal.strMeasure10}  ${
-      meal.strIngredient10 != null ? meal.strIngredient10 : ''
-    }</li>
-                <li>${meal.strMeasure11}  ${
-      meal.strIngredient11 != null ? meal.strIngredient11 : ''
-    }</li>
-                <li>${meal.strMeasure12}  ${
-      meal.strIngredient12 != null ? meal.strIngredient12 : ''
-    }</li>
-                <li>${meal.strMeasure13}  ${
-      meal.strIngredient13 != null ? meal.strIngredient13 : ''
-    }</li>
-                <li>${meal.strMeasure14}  ${
-      meal.strIngredient14 != null ? meal.strIngredient14 : ''
-    }</li>
-                <li>${meal.strMeasure15}  ${
-      meal.strIngredient15 != null ? meal.strIngredient15 : ''
-    }</li>
-                <li>${meal.strMeasure16}  ${
-      meal.strIngredient16 != null ? meal.strIngredient16 : ''
-    }</li>
-                <li>${meal.strMeasure17}  ${
-      meal.strIngredient17 != null ? meal.strIngredient17 : ''
-    }</li>
-                <li>${meal.strMeasure18}  ${
-      meal.strIngredient18 != null ? meal.strIngredient18 : ''
-    }</li>
-                <li>${meal.strMeasure19}  ${
-      meal.strIngredient19 != null ? meal.strIngredient19 : ''
-    }</li>
-                <li>${meal.strMeasure20}  ${
-      meal.strIngredient20 != null ? meal.strIngredient20 : ''
-    }</li>
+                <div class="principal__meal-instructions-list" id="listIngredients">
+                ${renderMeasureAndIngredients(ingredients, quantity)}
                 </div>
               </div>
             </div>
@@ -184,11 +145,15 @@ async function renderMealModal(id) {
   });
 }
 
-async function renderMealsCategory(category) {
-  const res = await getCategorySelected(category);
+async function renderMealsCategory(category, type) {
+  const res = await getCategorySelected(category, type);
   clearDivs();
   title.innerText = category;
-  btnBack.classList.remove('hidden');
+  if (type === 'c') {
+    btnBack.classList.remove('hidden');
+  } else {
+    btnBackingredients.classList.remove('hidden');
+  }
   res.meals.forEach((meal) => {
     const cardHtml = `
           <div class="principal__card-item shadow" id="${meal.idMeal}">
@@ -219,11 +184,11 @@ async function renderMealsCategory(category) {
 async function renderCategories() {
   clearDivs();
   title.innerText = 'Categories';
-  const res = await getCategory();
-  res.categories.forEach((category) => {
+  const res = await getCategory('c');
+  res.meals.forEach((category) => {
     const cardHtml = `
           <div class="principal__card-item shadow" id="${category.strCategory}">
-              <img src="${category.strCategoryThumb}" alt="" class="principal__card-img">
+              <img src="https://www.themealdb.com/images/category/${category.strCategory}.png" alt="" class="principal__card-img">
           <div class="principal__card-item-back">
             <p class="principal__card-item-p">${category.strCategory}</p>
           </div>
@@ -238,14 +203,57 @@ async function renderCategories() {
   const cards = document.querySelectorAll('.principal__card-item');
   cards.forEach((card) => {
     card.addEventListener('click', () => {
-      renderMealsCategory(card.id);
+      renderMealsCategory(card.id, 'c');
     });
   });
 
   hiddenLoader();
 }
+
+async function renderIngredients() {
+  clearDivs();
+  title.innerText = 'Ingredients';
+  const res = await getCategory('i');
+  res.meals.forEach((category) => {
+    const cardHtml = `
+          <div class="principal__card-item shadow" id="${category.strIngredient}">
+              <img src="https://www.themealdb.com/images/ingredients/${category.strIngredient}.png" alt="" class="principal__card-img">
+          <div class="principal__card-item-back">
+            <p class="principal__card-item-p">${category.strIngredient}</p>
+          </div>
+          </div>
+
+        `;
+
+    btnBack.classList.add('hidden');
+    btnBackingredients.classList.add('hidden');
+    principalBody.insertAdjacentHTML('beforeend', cardHtml);
+  });
+
+  const cards = document.querySelectorAll('.principal__card-item');
+  cards.forEach((card) => {
+    card.addEventListener('click', () => {
+      renderMealsCategory(card.id, 'i');
+    });
+  });
+
+  hiddenLoader();
+}
+
 renderCategories();
 
 btnBack.addEventListener('click', () => {
   renderCategories();
 });
+
+btnBackingredients.addEventListener('click', () => {
+  renderIngredients();
+});
+
+document
+  .getElementById('categorys')
+  .addEventListener('click', renderCategories);
+
+document
+  .getElementById('ingredients')
+  .addEventListener('click', renderIngredients);
